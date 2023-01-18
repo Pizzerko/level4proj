@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var bugsLeft = 15;
+    function initialize(){
+        var bugsLeft = 15;
+        comments = document.getElementById("comments");
+    }
+    var defiance = [
+      "You'll never catch us!", 
+      "We're too fast for you!", 
+      "You can't get us all!",
+      "Bug Power is the strongest!",
+      "We, he ultimate bug warriors, will defeat you!",
+      "Mercy? Hell No!",
+      "You're not getting away with killing our brothers!",
+      "We'll come back for you!",
+      "This is the end for you.",
+      "We'll crawl all over your bed tonight!",
+      "Your food will be gone!"
+    ];
+
+    var mercy = [
+        "Please spare us! We have done wrong!",
+        "Mercy! Mercy!",
+        "When will this horror end!",
+        "Is there no salvation in these dark times!",
+        "Oh god, please stay away from us!",
+        "We have to escape!",
+        "Please do not come any closer :(",
+        "I'm sorry we'll leave!"
+    ]
+
+    function killBug(bug) {
+      if (bug.src.endsWith("splat.jpg")) {
+        return;
+      }
+      bug.src = "splat.jpg";
+      bugsLeft--;
+      if (bugsLeft <= 0) {
+        comments.innerHTML = "You've splatted us all X_X";
+      } 
+      else {
+        var comment;
+        if (bugsLeft < 8) {
+          comment = mercy[Math.floor(Math.random() * mercy.length - 1) + 1];
+        } else {
+          comment = defiance[Math.floor(Math.random() * defiance.length - 1) + 1];
+        }
+        comments.innerHTML = comment;
+      }
+    }
+  </script>
+  <style>
+    img{
+        width:200px;
+        height:175px;
+    }
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    body{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url(kitchen.png);
+    }
+    h1{
+        text-align: center;
+        font-size: 50px;
+    }
+    #comments{
+        font-size: 35px;
+        text-align: center;
+        color:chartreuse;
+    }
+  </style>
+<body onload="initialize();">
+    <h1>BUG SPLAT GAME</h1>
+    <div class="container">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    </div>
+    <div id="comments"> You think you can get us all? You're so funny loser.</div>
+</body>
+</html>
