@@ -7,12 +7,12 @@
     <title>Document</title>
 </head>
 <script>
-    var bugsLeft = 15;
+    var bugs = 15;
     function initialize(){
-        var bugsLeft = 15;
-        comments = document.getElementById("comments");
+        var bugs = 15;
+        comments = document.getElementById("message");
     }
-    var defiance = [
+    var messageArray1 = [
       "You'll never catch us!", 
       "We're too fast for you!", 
       "You can't get us all!",
@@ -20,23 +20,26 @@
       "We, he ultimate bug warriors, will defeat you!",
       "Mercy? Hell No!",
       "You're not getting away with killing our brothers!",
-      "We'll come back for you!",
       "This is the end for you.",
       "We'll crawl all over your bed tonight!",
       "Your food will be gone!"
     ];
 
-    var mercy = [
+    var messageArray2 = [
         "Please spare us! We have done wrong!",
-        "Mercy! Mercy!",
+        "Mercy!",
         "When will this horror end!",
-        "Is there no salvation in these dark times!",
         "Oh god, please stay away from us!",
         "We have to escape!",
         "Please do not come any closer :(",
         "I'm sorry we'll leave!"
     ]
-
+    function getRandomInteger(lower, upper){
+    //R = parseInt(rnd * (upper - (lower - 1))) + lower
+    var multiplier = upper - (lower - 1);
+    var rnd = parseInt(Math.random() * multiplier) + lower;
+    return rnd;
+    }
     function killBug(bug) {
       if (bug.src.endsWith("splat.jpg")) {
         return;
@@ -44,16 +47,16 @@
       bug.src = "splat.jpg";
       bugsLeft--;
       if (bugsLeft <= 0) {
-        comments.innerHTML = "You've splatted us all X_X";
+        comments.innerHTML = "You've killed us all X_X";
       } 
       else {
-        var comment;
-        if (bugsLeft < 8) {
-          comment = mercy[Math.floor(Math.random() * mercy.length - 1) + 1];
+        var comment1;
+        if (bugs < 8) {
+          comment1 = messageArray2[getRandomInteger(0, messageArray2.length);
         } else {
-          comment = defiance[Math.floor(Math.random() * defiance.length - 1) + 1];
+          comment1 = messageArray1[getRandomInteger(0, messageArray1.length);
         }
-        comments.innerHTML = comment;
+        comments.innerHTML = comment1;
       }
     }
   </script>
@@ -83,7 +86,7 @@
     }
   </style>
 <body onload="initialize();">
-    <h1>BUG SPLAT GAME</h1>
+    <h1>Bug Splat</h1>
     <div class="container">
     <img src="bug.png" onclick="killBug(this);" alt="">
     <img src="bug.png" onclick="killBug(this);" alt="">
@@ -101,6 +104,6 @@
     <img src="bug.png" onclick="killBug(this);" alt="">
     <img src="bug.png" onclick="killBug(this);" alt="">
     </div>
-    <div id="comments"> You think you can get us all? You're so funny loser.</div>
+    <div id="message"> You think you can get us all? You're so funny loser.</div>
 </body>
 </html>
