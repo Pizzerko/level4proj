@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var bugs = 15;
+    function initialize(){
+        var bugs = 15;
+        comments = document.getElementById("comments");
+    }
+    var messageArray1 = [
+    "You'll never catch us!", 
+      "We're too fast for you!", 
+      "You can't get us all!",
+      "Bug Power is the strongest!",
+      "You're just easy prey",
+      "Mercy? Like we care loser!",
+      "You're not getting away with killing our brothers!",
+      "HEE HEE LOSER.",
+      "We'll crawl all over your bed tonight!",
+      "Your food will be gone!"
+    ];
+
+    var messageArray2 = [
+    "Please spare us! We have done wrong!",
+        "Mercy!",
+        "When will this horror end!",
+        "Oh god, please stay away from us!",
+        "We have to escape!",
+        "Bro chill.",
+        "Please do not come any closer :(",
+        "I'm sorry!"
+    ]
+
+    function getRandomInteger(lower, upper){
+    //R = parseInt(rnd * (upper - (lower - 1))) + lower
+    var multiplier = upper - (lower - 1);
+    var rnd = parseInt(Math.random() * multiplier) + lower;
+    return rnd;
+    }
+
+    function killBug(bug) {
+      if (bug.src.endsWith("splat.jpg")) {
+        return;
+      }
+      bug.src = "splat.jpg";
+      bugs--;
+      if (bugs <= 0) {
+        comments.innerHTML = "You've killed us all X_X";
+      } 
+      else {
+        var comment;
+        if (bugs < 8) {
+          comment = messageArray2[getRandomInteger(0,messageArray2.length - 1)];
+        } else {
+          comment = messageArray1[getRandomInteger(0,messageArray1.length - 1)];
+        }
+        comments.innerHTML = comment;
+      }
+    }
+  </script>
+  <style>
+    img{
+        width:200px;
+        height:175px;
+    }
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    body{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url(kitchen.png);
+    }
+    h1{
+        text-align: center;
+        font-size: 50px;
+    }
+    #comments{
+        font-size: 35px;
+        text-align: center;
+        color:chartreuse;
+    }
+  </style>
+<body onload="initialize();">
+    <h1>BUG SPLAT GAME</h1>
+    <div class="container">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    <img src="bug.png" onclick="killBug(this);" alt="">
+    </div>
+    <div id="comments"> You think you can get us all? You're so funny loser.</div>
+</body>
+</html>
